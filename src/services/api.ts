@@ -11,6 +11,13 @@ interface ListReturn<T> {
   items: T[];
 }
 
+export interface Travel {
+  dateOfDeparture: string;
+  numberOfPassengers: number;
+  traveledDistance: number;
+  travel: { from: string; to: string; travelDistance: number }[];
+}
+
 export class Api {
   static listReturn<T>(items: T[]): ListReturn<T> {
     return {
@@ -48,10 +55,20 @@ export class Api {
     intermediateCities: string[];
     dateOfDeparture: string;
     numberOfPassengers: number;
-  }): Promise<any> {
-    const { originCity, destinationCity, intermediateCities } = values;
+  }): Promise<Travel> {
+    const {
+      dateOfDeparture,
+      destinationCity,
+      intermediateCities,
+      numberOfPassengers,
+      originCity,
+    } = values;
 
-    const citiesToVisit = [originCity, ...intermediateCities, destinationCity];
+    const citiesToVisit = [
+      originCity,
+      ...intermediateCities.filter((city) => city),
+      destinationCity,
+    ];
 
     // Simulating call from database
     await sleep(1500);
@@ -103,6 +120,8 @@ export class Api {
     }
 
     return {
+      dateOfDeparture,
+      numberOfPassengers,
       traveledDistance: total,
       travel: travelStops,
     };

@@ -103,7 +103,7 @@ export const TripForm: FC<Props> = ({ defaultValues, onSubmit }) => {
         </FormControl>
 
         <FormControl py={2}>
-          <FormLabel>City of origin</FormLabel>
+          <FormLabel>Destination city</FormLabel>
           <CityFinderInput
             onChange={setDestinationCity}
             value={destinationCity}

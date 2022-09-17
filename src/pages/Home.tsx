@@ -37,7 +37,7 @@ const Home = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box w="50%">
+      <Box minW="350px" maxWidth="600px">
         <TripForm onSubmit={handleSubmit} />
       </Box>
     </Box>
