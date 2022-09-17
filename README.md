@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# The Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A travel planner app! It should calculate the travel time between a set of cities, that must be defined by the end user.
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+### Must Have
 
-### `yarn start`
+- Two pages:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Home:
+    - Must contain travel form;
+    - Allow deep-linking: initial values for all fields of the form can be provided in the URL
+  - Search:
+    - Should also contain deep-linking;
+    - Must contain travel details;
+    - All the fields filled on the home page should be displayed;
+    - The distance of the route (in kilometers) should be calculated and displayed:
+      - Between subsequent cities of the route
+      - Total distance.
+    - The distance calculation should be performed asynchronously with loading indication and error handling.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Travel form:
+  - Should have validation;
+  - If some error is found, it should be shown around the problematic input and the submit button should be disabled;
+  - Fields:
+    - City of origin
+      - Required;
+      - Searchable dropdown (combobox) with a list of cities;
+      - The list of cities should be requested and searched asynchronously with the loading indication;
+    - Intermediate cities
+      - Opitional;
+      - Same input as city of origin
+    - City of destination
+      - Required;
+      - Same input as city of origin
+    - Date of the trip:
+      - Required;
+      - Should be a date in the future;
+    - Number of passengers:
+      - Required;
+      - Should be a number greater than 0;
 
-### `yarn test`
+### Technical Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- A SPA using React;
+- Deploy your app to the place of your choice, share a link that we can open to play with the app;
+- Publish your source code to GitHub, with a public repository, so we are able to access it;
 
-### `yarn build`
+### Use Cases
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- To implement a cities database hardcode the list of cities and simulate the delay of requesting the cities;
+- To implement the distance calculation use Haversine distance formula and simulate the delay of the calculation
+- When “Dijon” city is involved the distance calculation should fail to demonstrate the error handling abilities of the UI.
+- When a user attempts to find cities using the phrase “fail” (case-insensitive) the mocked API should fail to return results to demonstrate the error handling abilities of the UI.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Good to have
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Typescript/Flow types;
+- Usage of a design system;
+- Testing(no full coverage required):
+- Unit tests;
+- e2e is a big plus
 
-### `yarn eject`
+You may use external libraries.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Good luck!
