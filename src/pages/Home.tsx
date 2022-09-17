@@ -29,17 +29,8 @@ const Home = () => {
   };
 
   return (
-    <Box
-      h="100vh"
-      w="100vw"
-      bg="gray.300"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Box minW="350px" maxWidth="600px">
-        <TripForm onSubmit={handleSubmit} />
-      </Box>
+    <Box minW="350px" maxWidth="600px">
+      <TripForm onSubmit={handleSubmit} />
     </Box>
   );
 };
