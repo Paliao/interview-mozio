@@ -93,7 +93,7 @@ export const TripForm: FC<Props> = ({ defaultValues, onSubmit }) => {
   return (
     <Box p={5} boxShadow="md" bg="white" px="4">
       <Heading size="lg" as="h2" mb={8} textAlign="center">
-        Calculate your trip distance
+        Travel Calculator
       </Heading>
 
       <form onSubmit={handleSubmit}>
