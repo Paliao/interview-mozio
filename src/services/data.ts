@@ -1,4 +1,6 @@
-export const citiesJson = [
+export type City = [string, number, number];
+
+export const cities = [
   ["Paris", 48.856614, 2.352222],
   ["Marseille", 43.296482, 5.36978],
   ["Lyon", 45.764043, 4.835659],
@@ -19,4 +21,4 @@ export const citiesJson = [
   ["Dijon", 47.322047, 5.04148],
   ["Nîmes", 43.836699, 4.360054],
   ["Aix-en-Provence", 43.529742, 5.447427],
-];
+] as City[];
