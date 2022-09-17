@@ -17,27 +17,45 @@ import {
 import * as joi from "joi";
 
 import { CityFinderInput } from "./CityFinderInput";
+import { MutipleCitiesTripInput } from "./MutipleCitiesTripInput";
 
 const schema = joi
-  .object({
+  .object<TripFormValues>({
     originCity: joi.string().required(),
     destinationCity: joi.string().required(),
     dateOfDeparture: joi.string().required(),
     numberOfPassengers: joi.number().required().min(1).max(10),
+    intermediateCities: joi.array().items(joi.string()),
   })
   .required();
 
 interface Props {
-  onSubmit: (values: any) => void;
+  defaultValues?: TripFormValues;
+  onSubmit: (values: TripFormValues) => void;
 }
 
-export const TripForm: FC<Props> = ({ onSubmit }) => {
-  const [originCity, setOriginCity] = useState("");
-  const [destinationCity, setDestinationCity] = useState("");
-  const [dateOfDeparture, setDateOfDeparture] = useState("");
-  const [numberOfPassengers, setNumberOfPassengers] = useState(0);
+export interface TripFormValues {
+  originCity: string;
+  destinationCity: string;
+  intermediateCities: string[];
+  dateOfDeparture: string;
+  numberOfPassengers: number;
+}
 
-  // const [intermediateCities, setIntermediateCities] = useState([]);
+export const TripForm: FC<Props> = ({ defaultValues, onSubmit }) => {
+  const [originCity, setOriginCity] = useState(defaultValues?.originCity ?? "");
+  const [destinationCity, setDestinationCity] = useState(
+    defaultValues?.destinationCity ?? ""
+  );
+  const [dateOfDeparture, setDateOfDeparture] = useState(
+    defaultValues?.dateOfDeparture ?? ""
+  );
+  const [numberOfPassengers, setNumberOfPassengers] = useState(
+    defaultValues?.numberOfPassengers ?? 0
+  );
+  const [intermediateCities, setIntermediateCities] = useState(
+    defaultValues?.intermediateCities ?? []
+  );
 
   const isValid = useMemo(() => {
     const validation = schema.validate(
@@ -45,13 +63,20 @@ export const TripForm: FC<Props> = ({ onSubmit }) => {
         originCity,
         destinationCity,
         dateOfDeparture,
+        intermediateCities,
         numberOfPassengers,
       },
       { abortEarly: false }
     );
 
     return !validation.error;
-  }, [originCity, destinationCity, dateOfDeparture, numberOfPassengers]);
+  }, [
+    originCity,
+    destinationCity,
+    dateOfDeparture,
+    intermediateCities,
+    numberOfPassengers,
+  ]);
 
   const handleSubmit = (ev: any) => {
     ev.preventDefault();
@@ -61,6 +86,7 @@ export const TripForm: FC<Props> = ({ onSubmit }) => {
       destinationCity,
       dateOfDeparture,
       numberOfPassengers,
+      intermediateCities,
     });
   };
 
@@ -84,9 +110,13 @@ export const TripForm: FC<Props> = ({ onSubmit }) => {
           />
         </FormControl>
 
-        {/* <CityFinderInput label="Intermediate cities" />
-        
-      <CityFinderInput label="City of destination" /> */}
+        <FormControl py={2}>
+          <FormLabel>Intermediate cities</FormLabel>
+          <MutipleCitiesTripInput
+            onChange={setIntermediateCities}
+            value={intermediateCities}
+          />
+        </FormControl>
 
         <FormControl py={2}>
           <FormLabel>Date of the trip</FormLabel>

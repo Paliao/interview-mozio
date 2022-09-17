@@ -3,14 +3,6 @@ import { citiesJson } from "./data";
 type City = [string, number, number];
 const cities = citiesJson as City[];
 
-// interface IForm {
-//   originCity: string;
-//   destinationCity: string;
-//   // intermediateCities: [],
-//   dateOfDeparture: string;
-//   numberOfPassengers: number;
-// }
-
 export const sleep = (ms: number) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
