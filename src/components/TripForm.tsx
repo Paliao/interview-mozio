@@ -91,7 +91,7 @@ export const TripForm: FC<Props> = ({ defaultValues, onSubmit }) => {
   };
 
   return (
-    <Box p={5} boxShadow="md" bg="white" px="4">
+    <Box boxShadow="md" bg="white" borderRadius="md" p={8}>
       <Heading size="lg" as="h2" mb={8} textAlign="center">
         Travel Calculator
       </Heading>
@@ -148,6 +148,7 @@ export const TripForm: FC<Props> = ({ defaultValues, onSubmit }) => {
           <Button
             colorScheme="blue"
             type="submit"
+            mt={4}
             mr={3}
             rightIcon={<IoSearchSharp />}
             disabled={!isValid}

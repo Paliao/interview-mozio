@@ -1,3 +1,20 @@
+Hi, thanks for taking a time to look at this repo!
+This simple app is a showcase of all my set of skills, my favorite stack(Missing only Next.js) and a little simulation of what kind of work/code you could expect from hiring me.
+I'm doing this incrementally during my free time, in shorts bursts of 1-3 hours(each commit)
+
+### Focus Points
+
+- My React code itself
+  - Componentization
+  - Folder structure
+- Usage Chakra UI
+  - Trying to show my knowledge of the properties and components
+- Typescript
+  - My components are always typed in some way, helping the codebase to grow consistently
+- Auxiliary libraries
+- Api service simulation
+- Tests (Soon)
+
 # The Task
 
 A travel planner app! It should calculate the travel time between a set of cities, that must be defined by the end user.

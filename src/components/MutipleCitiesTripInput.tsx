@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from "react";
-import { Button, IconButton, Box } from "@chakra-ui/react";
+import { Box, Button, Flex, IconButton } from "@chakra-ui/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -30,9 +30,16 @@ export const MutipleCitiesTripInput: FC<Props> = ({ onChange, value }) => {
   );
 
   return (
-    <>
+    <Box>
       {value.map((city, idx) => (
-        <Box display="flex" alignItems="center" width="100%">
+        <Flex
+          key={city}
+          gap={4}
+          display="flex"
+          alignItems="center"
+          width="100%"
+          mb={4}
+        >
           <Box width="100%">
             <CityFinderInput
               key={idx}
@@ -46,15 +53,21 @@ export const MutipleCitiesTripInput: FC<Props> = ({ onChange, value }) => {
             icon={<IoIosCloseCircle />}
             onClick={() => removeCity(idx)}
           />
-        </Box>
+        </Flex>
       ))}
-      <Button
-        colorScheme="green"
-        rightIcon={<AiOutlinePlus />}
-        onClick={addCity}
-      >
-        Add stop city
-      </Button>
-    </>
+
+      <Box my={2}>
+        <Button
+          size="sm"
+          variant="ghost"
+          border="1px"
+          colorScheme="green"
+          rightIcon={<AiOutlinePlus />}
+          onClick={addCity}
+        >
+          Add stop city
+        </Button>
+      </Box>
+    </Box>
   );
 };
